@@ -17,26 +17,34 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-2"> </div>
+                <div class="col-md-3"> </div>
 
-                <div class="col-md-8">
+                <div class="col-md-6">
 
-                    <form:errors path="*" element="div" cssClass="alert alert-danger" />
+                    <form:form method="post" commandName="hotel">
+                        <h2></h2>
 
-                    <div clas="form-control">
+                        <form:errors path="*" element="div" cssClass="alert alert-danger" />
 
-                        <div class="input-group">
-                            <form:label path="nombre" cssclass="input-group-addon">Hotel a buscar:</form:label>
-                            <form:input path="nombre" cssClass="form-control" />
+                        <div clas="form-control">
+                            <p>
+                                <form:label path="nombre">Buscar hotel:</form:label>
+                                <form:input path="nombre" cssClass="form-control" />
+
+                            </p>
+                        </div>
+                        <div class="row text-center" >
+                            <input type="submit" value="Buscar hotel" class="btn btn-primary"  />
 
                         </div>
-                        <input type="submit" value="Buscar " class="btn btn-info form-control"  />
 
-                    </div>
+                    </form:form>
+
+
 
                 </div>
 
-                <div class="col-md-2"> </div>
+                <div class="col-md-3"> </div>
             </div>
 
         </div>

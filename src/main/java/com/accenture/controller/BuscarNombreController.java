@@ -3,12 +3,9 @@ package com.accenture.controller;
 import com.accenture.Validaciones.Validaciones;
 import com.accenture.model.HotelesModel;
 import com.accenture.service.Conexion;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.dao.DataAccessException;
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,11 +27,32 @@ public class BuscarNombreController {
         this.jdbcTemplate = new JdbcTemplate(con.conectar());
     }
 
-    @RequestMapping(value = "BuscarNombre.htm", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView form() {
-        return new ModelAndView("BuscarNombre", "command", new HotelesModel());
-  
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("BuscarNombre");
+        mav.addObject("hotel", new HotelesModel());
+
+        return mav;
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView form(@ModelAttribute("hotel") HotelesModel h, BindingResult result, SessionStatus status) {
+        if (result.hasErrors()) {
+            ModelAndView mav = new ModelAndView();
+            mav.setViewName("BuscarNombre");
+            mav.addObject("hotel", new HotelesModel());
+            return mav;
+
+        } else {
+            ModelAndView mav = new ModelAndView();
+
+            String sql = "select  * from hoteles where estado=1 and nombre='" + h.getNombre() + "'";
+            List datos = this.jdbcTemplate.queryForList(sql);
+            mav.addObject("datos", datos);
+            mav.setViewName("home");
+            return mav;
+        }
+    }
 
 }
