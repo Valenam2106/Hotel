@@ -11,9 +11,18 @@
         <title>Página principal</title>
     </head>
     <body>
-        <div class="page-header">
-            <h1> Administrador web<small> Hoteles</small></h1>
+        <div class="row">
+            <div class="col-md-1">
+                <img src="https://www.accenture.com/_acnmedia/Accenture/next-gen-2/event-hpe-discover/Accenture-Lockup.png" width="130" height="100"/>
+                
+            </div>
+            <div class="col-md-11">
+                <div class="page-header">
+                    <h1> Administrador web<small> Hoteles</small></h1>
+                </div>
+            </div>
         </div>
+
 
         <div class="container">
             <div class="row">
@@ -45,7 +54,7 @@
                                     <td><c:out value="${dato.numEstrellas}"/></td>
                                     <td class="info"><c:out value="${dato.huespedes}"/></td>
                                     <td><c:out value="${dato.tripAdvisor}"/></td>
-                                    <td class="info"><a href="<c:url value="edit.htm?id=${dato.id}" />">Editar</a>   <a href="<c:url value="delete.htm?id=${dato.id}" />">Eliminar</a></td>
+                                    <td class="info"><a href="<c:url value="edit.htm?id=${dato.id}" />">Editar</a>  <a href="<c:url value="delete.htm?id=${dato.id}" />">Eliminar</a></td>
                                 </tr>
 
                             </c:forEach>
@@ -55,7 +64,7 @@
                     <div class="row text-center" >
                         <a href="<c:url value="add.htm" />" class="btn btn-success">Agregar hotel</a>
                         <a href="<c:url value="BuscarNombre.htm" />" class="btn btn-info">Filtrar por nombre</a>
-                        <a href="<c:url value="add.htm" />" class="btn btn-primary">Filtrar por ubicación</a>
+                        <a href="<c:url value="BuscarDireccion.htm" />" class="btn btn-primary">Filtrar por ubicación</a>
                     </div>
                 </div>
 
@@ -63,5 +72,9 @@
             </div>
 
         </div>
+        <br>
+        <ol class="breadcrumb">
+            <li><a href="<c:url value="/home.htm" />">Página principal</a></li>
+        </ol>
     </body>
 </html>

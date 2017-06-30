@@ -19,6 +19,7 @@ public class HomeController {
 
     }
 
+    //El model and view 
     @RequestMapping("home.htm")
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView();

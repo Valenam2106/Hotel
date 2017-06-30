@@ -42,11 +42,8 @@ public class EditController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView form(
-            @ModelAttribute("hotel") HotelesModel h,
-            BindingResult result,
-            SessionStatus status,
-            HttpServletRequest request
-    ) {
+            @ModelAttribute("hotel") HotelesModel h, BindingResult result, SessionStatus status, HttpServletRequest request) {
+
         this.Validar.validate(h, result);
         if (result.hasErrors()) {
             ModelAndView mav = new ModelAndView();
@@ -66,7 +63,7 @@ public class EditController {
                     + " tripAdvisor=? "
                     + "where "
                     + "id=? ",
-                    h.getNombre(), h.getDireccion(), h.getNumEstrellas(), h.getHuespedes(), h.getTripAdvisor(), id);
+                    h.getNombre(), h.getDireccion().replace(" ", ""), h.getNumEstrellas(), h.getHuespedes(), h.getTripAdvisor(), id);
             return new ModelAndView("redirect:/home.htm");
         }
 

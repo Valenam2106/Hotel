@@ -37,12 +37,7 @@ public class AddController {
         return mav;
     }
     @RequestMapping(method=RequestMethod.POST)
-    public ModelAndView form
-        (
-                @ModelAttribute("hotel") HotelesModel h,
-                BindingResult result,
-                SessionStatus status
-        )
+    public ModelAndView form(@ModelAttribute("hotel") HotelesModel h, BindingResult result, SessionStatus status)
     {
         this.Validar.validate(h, result);
         if(result.hasErrors())
@@ -53,9 +48,10 @@ public class AddController {
             return mav;
         }else
         {
+        
         this.jdbcTemplate.update
         ("insert into hoteles (nombre,direccion,numEstrellas,huespedes,estado,tripAdvisor) values (?,?,?,?,?,?)",
-         h.getNombre(),h.getDireccion(),h.getNumEstrellas(),h.getHuespedes(),1,h.getTripAdvisor());
+         h.getNombre(),h.getDireccion().replace(" ", ""),h.getNumEstrellas(),h.getHuespedes(),1,h.getTripAdvisor());
          return new ModelAndView("redirect:/home.htm");
         //Luego de crear el registro en la base de datos cargo la pagina donde muestro los hoteles
         }

@@ -25,7 +25,8 @@
                 <prop key="edit.htm">editController</prop>
                 <prop key="delete.htm">deleteController</prop>
                 <prop key="BuscarNombre.htm">buscarNombreController</prop>
-                <prop key="ResultBusName.htm">buscarNombreController</prop>
+                <prop key="BuscarDireccion.htm">buscarDireccionController</prop>
+
 
             </props>
         </property>
@@ -42,9 +43,7 @@
     <bean name="deleteController" class="com.accenture.controller.DeleteController" />
     <bean name="searchNameController" class="com.accenture.controller.SearchNameController" />
     <bean name="buscarNombreController" class="com.accenture.controller.BuscarNombreController" />
-
-
-
+    <bean name="buscarDireccionController" class="com.accenture.controller.BuscarDireccionController" />
 
     <!--
     The index controller.

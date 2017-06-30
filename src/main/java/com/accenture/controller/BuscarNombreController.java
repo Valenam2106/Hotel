@@ -4,7 +4,6 @@ import com.accenture.Validaciones.Validaciones;
 import com.accenture.model.HotelesModel;
 import com.accenture.service.Conexion;
 import java.util.List;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -37,11 +36,13 @@ public class BuscarNombreController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView form(@ModelAttribute("hotel") HotelesModel h, BindingResult result, SessionStatus status) {
-        if (result.hasErrors()) {
+    public ModelAndView form(@ModelAttribute("hotel") HotelesModel h, BindingResult result, SessionStatus status) { //Reenviamos los datos del formulario
+        
+        if (h.getNombre().equals("")) {
             ModelAndView mav = new ModelAndView();
             mav.setViewName("BuscarNombre");
             mav.addObject("hotel", new HotelesModel());
+            
             return mav;
 
         } else {

@@ -1,4 +1,3 @@
-
 package com.accenture.Validaciones;
 
 import com.accenture.model.HotelesModel;
@@ -12,8 +11,6 @@ import org.springframework.validation.Validator;
  */
 public class Validaciones implements Validator {
 
-
-
     @Override
     public boolean supports(Class<?> type) {
         return HotelesModel.class.isAssignableFrom(type);
@@ -21,8 +18,9 @@ public class Validaciones implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        
+
         HotelesModel hotel = (HotelesModel) o; //Defino el objeto
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", //Defino que el nombre sea obligatorio
                 "required.nombre", "El campo nombre es necesario para continuar.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "direccion",//Defino que la direccion sea obligatoria...
@@ -33,8 +31,10 @@ public class Validaciones implements Validator {
                 "required.huespedes", "El campo huespedes promedio es necesario para continuar.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tripAdvisor",
                 "required.tripAdvisor", "El campo TripAdvisor es necesario para continuar.");
-        
+
     }
 
-    
+
+
+
 }
